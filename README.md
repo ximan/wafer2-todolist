@@ -8,6 +8,8 @@
 
 注：下载wafer2-quickstart-nodejs后，按照官方教程操作，能在微信开发者工具模拟器点击【登录】显示登录成功为止。
 
+![todolist](todolist.jpg)
+
 ## 数据库新建表
 
 在腾讯云开发环境，进入phpMyAdmin，登录。
