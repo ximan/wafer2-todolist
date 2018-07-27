@@ -21,7 +21,15 @@ var config = {
         tunnelUrl: `${host}/weapp/tunnel`,
 
         // 上传图片接口
-        uploadUrl: `${host}/weapp/upload`
+        uploadUrl: `${host}/weapp/upload`,
+      // 增加
+      todoAddUrl: `${host}/weapp/todoAdd`,
+      // 查询
+      todolistUrl: `${host}/weapp/todolist`,
+      // 修改
+      todoEditUrl: `${host}/weapp/todoEdit`,
+      // 删除
+      todoDelUrl: `${host}/weapp/todoDel`,
     }
 };
 

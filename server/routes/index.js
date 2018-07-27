@@ -31,5 +31,13 @@ router.post('/tunnel', controllers.tunnel.post)
 router.get('/message', controllers.message.get)
 // POST 用来处理微信转发过来的客服消息
 router.post('/message', controllers.message.post)
+// 新增
+router.post('/todoAdd', controllers.todoAdd)
+// 查询
+router.get('/todolist', controllers.todolist)
+// 修改
+router.post('/todoEdit', controllers.todoEdit)
+// 删除
+router.post('/todoDel', controllers.todoDel)
 
 module.exports = router

@@ -37,3 +37,27 @@
         </navigator>
     </view>
 </view>
+
+<!-- 增加 -->
+<view class='btn-add'>
+  <input bindinput="bindKeyInput" />
+  <button size='mini' type='primary' bindtap="todoAdd">增加</button>
+</view>
+<!-- /增加 -->
+<!-- 查询 -->
+<view class='list'>
+  <view class='item {{item.complete ? "item-del" : ""}}' wx:for='{{listData}}' wx:key="index">
+    <view class='num'>{{item.id}}</view>
+    <view class='textbox'>
+      <text class='text'>{{item.name}}</text>
+    </view>
+    <view class='operation'>
+      <text class='btn-edit' data-id='{{item.id}}' data-complete='{{item.complete}}' bindtap="btnChange">
+        <block wx:if='{{item.complete}}'>取消</block>
+        <block wx:else>完成</block>
+      </text>
+      <text class='btn-del' data-id='{{item.id}}' bindtap="btnDel">删除</text>
+    </view>
+  </view>
+</view>
+<!-- /查询 -->

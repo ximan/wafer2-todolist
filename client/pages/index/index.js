@@ -8,7 +8,9 @@ Page({
         userInfo: {},
         logged: false,
         takeSession: false,
-        requestResult: ''
+        requestResult: '',
+      inputValue: '',
+      listData: []
     },
 
     // 用户登录示例
@@ -209,5 +211,97 @@ Page({
         }
         util.showBusy('信道连接中...')
         this.setData({ tunnelStatus: 'closed' })
+    },
+
+  // 获取文本框值
+  bindKeyInput: function (e) {
+    this.setData({
+      inputValue: e.detail.value
+    })
+  },
+  // 增加
+  todoAdd: function () {
+    let me = this;
+    if (me.data.inputValue == '') {
+      util.showModel('', '不能为空')
+      return false;
     }
+    wx.request({
+      url: config.service.todoAddUrl,
+      method: 'POST',
+      data: {
+        name: me.data.inputValue,
+        complete: false
+      },
+      success: res => {
+        console.log(res.data);
+        me.getTodolist();
+      },
+      fail: err => {
+        console.log(err)
+      }
+    });
+  },
+  // 查询
+  getTodolist: function () {
+    let me = this;
+    wx.request({
+      url: config.service.todolistUrl,
+      success: res => {
+        console.log(res.data);
+        me.setData({
+          listData: res.data.data
+        });
+      },
+      fail: err => {
+        console.log(err)
+      }
+    });
+  },
+  // 修改
+  btnChange: function (e) {
+    let me = this;
+    let id = e.currentTarget.dataset.id;
+    let complete = e.currentTarget.dataset.complete;
+    wx.request({
+      url: config.service.todoEditUrl,
+      method: 'POST',
+      data: {
+        id: id,
+        complete: complete ? 0 : 1
+      },
+      success: res => {
+        console.log(res.data);
+        me.setData({
+          listData: res.data.data
+        });
+      },
+      fail: err => {
+        console.log(err)
+      }
+    });
+  },
+  // 删除
+  btnDel: function (e) {
+    let me = this;
+    let id = e.currentTarget.dataset.id;
+    wx.request({
+      url: config.service.todoDelUrl,
+      method: 'POST',
+      data: {
+        id: id
+      },
+      success: res => {
+        console.log(res.data);
+        me.getTodolist();
+      },
+      fail: err => {
+        console.log(err)
+      }
+    });
+  },
+  // 生命周期函数--监听页面加载
+  onLoad: function () {
+    this.getTodolist();
+  },
 })

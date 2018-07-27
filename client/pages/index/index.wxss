@@ -127,3 +127,34 @@ page {
     line-height: 36rpx;
     word-break: break-all;
 }
+
+/* 增加 */
+.btn-add{
+  display: flex;
+  margin: 20rpx;
+}
+.btn-add input{
+  border: 1px solid #aaa;
+  background-color: #fff;
+}
+/* /增加 */
+/* 查询 */
+.list{
+  margin: 20rpx;
+}
+.list .item{
+  display: flex;
+}
+.list .num{
+  width: 100rpx;
+}
+.list .textbox{
+  flex: 1;
+}
+.list .operation text{
+  margin-left: 20rpx;
+}
+.list .item-del .text{
+  text-decoration: line-through;
+}
+/* /查询 */
